@@ -74,7 +74,7 @@
             "value": "testo"
         },
         "adminPassword": {
-            "value": null
+            "value": "123QWEasd!123QWEasd!"
         },
         "diagnosticsStorageAccountName": {
             "value": "kgauratestvmrsdiag"
