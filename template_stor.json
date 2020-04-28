@@ -27,7 +27,7 @@
             "name": "[parameters('storageAccountName')]",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2019-06-01",
-            "location": "[parameters('parameters_stor.json')]",
+            "location": "[parameters('./parameters_stor.json')]",
             "properties": {
                 "accessTier": "[parameters('accessTier')]",
                 "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]"
