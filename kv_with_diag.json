@@ -33,6 +33,7 @@
                 ],
                 "properties": {
                     "workspaceId": "[parameters('workspaceId')]",
+                    "eventHubName": "kgtest",
                     "logs": [
                     {
                         "category": "AuditEvent",
