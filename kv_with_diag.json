@@ -29,7 +29,7 @@
             "resources": [
                 {
                 "type": "Microsoft.KeyVault/vaults/providers/diagnosticsettings",
-                "name": "[concat(parameters('vaults_kvkg2_name'), '/Microsoft.Insights/service')]",
+                "name": "[concat(parameters('vaults_kvkg2_name'), '/Microsoft.Insights/kgservice')]",
                 "apiVersion": "2016-09-01",
                 "location": "[parameters('location')]",
                 "dependsOn": [
