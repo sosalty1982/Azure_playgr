@@ -13,10 +13,6 @@
         "workspaceId": {
             "defaultValue": "/subscriptions/2e903775-9131-4ac6-a19a-e26c27b71e1d/resourcegroups/loganalwrkspckgrg/providers/microsoft.operationalinsights/workspaces/loganalwrkspckg" ,
             "type": "String"
-        },
-        "LogsRetentionInDays": {
-            "defaultValue": "5" ,
-            "type": "String"
         }
         
     },
@@ -41,10 +37,6 @@
                     {
                         "category": "AuditEvent",
                         "enabled": true,
-                        "retentionPolicy": {
-                        "enabled": true,
-                        "days": "[parameters('LogsRetentionInDays')]"
-                        }
                     }
                     ]
                 }
