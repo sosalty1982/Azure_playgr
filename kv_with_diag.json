@@ -1,0 +1,110 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vaults_kvkg2_name": {
+            "defaultValue": "kvkg2",
+            "type": "String"
+            },
+        "location": {
+            "defaultValue": "eastus",
+            "type": "String"
+        },
+        "workspaceId": {
+            "defaultValue": "/subscriptions/2e903775-9131-4ac6-a19a-e26c27b71e1d/resourcegroups/loganalwrkspckgrg/providers/microsoft.operationalinsights/workspaces/loganalwrkspckg" ,
+            "type": "String"
+        },
+        "LogsRetentionInDays": {
+            "defaultValue": "5" ,
+            "type": "String"
+        }
+        
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2016-10-01",
+            "name": "[parameters('vaults_kvkg2_name')]",
+            "resources": [
+                {
+                "type": "Microsoft.KeyVault/vaults/providers/diagnosticsettings",
+                "name": "[concat(parameters('vaults_kvkg2_name'), '/Microsoft.Insights/service')]",
+                "apiVersion": "2016-09-01",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kvkg2_name'))]",
+                ],
+                "properties": {
+                    "workspaceId": "[parameters('workspaceId')]",
+                    "logs": [
+                    {
+                        "category": "AuditEvent",
+                        "enabled": true,
+                        "retentionPolicy": {
+                        "enabled": true,
+                        "days": "[parameters('LogsRetentionInDays')]"
+                        }
+                    }
+                    ]
+                }
+                }
+            ],
+            "location": "[parameters('location')]",
+            "properties": {
+                "sku": {
+                    "family": "A",
+                    "name": "Standard"
+                },
+                "tenantId": "ee137cc4-5d43-43cf-9da5-f75728b8d21f",
+                "accessPolicies": [
+                    {
+                        "tenantId": "ee137cc4-5d43-43cf-9da5-f75728b8d21f",
+                        "objectId": "9b47e030-4215-4cbb-8c5b-75ebc3548ee9",
+                        "permissions": {
+                            "keys": [
+                                "Get",
+                                "List",
+                                "Update",
+                                "Create",
+                                "Import",
+                                "Delete",
+                                "Recover",
+                                "Backup",
+                                "Restore"
+                            ],
+                            "secrets": [
+                                "Get",
+                                "List",
+                                "Set",
+                                "Delete",
+                                "Recover",
+                                "Backup",
+                                "Restore"
+                            ],
+                            "certificates": [
+                                "Get",
+                                "List",
+                                "Update",
+                                "Create",
+                                "Import",
+                                "Delete",
+                                "Recover",
+                                "ManageContacts",
+                                "ManageIssuers",
+                                "GetIssuers",
+                                "ListIssuers",
+                                "SetIssuers",
+                                "DeleteIssuers"
+                            ]
+                        }
+                    }
+                ],
+                "enabledForDeployment": false,
+                "enabledForDiskEncryption": false,
+                "enabledForTemplateDeployment": false,
+                "enableSoftDelete": true
+            }
+        }
+    ]
+}
