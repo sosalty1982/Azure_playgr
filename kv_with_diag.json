@@ -25,7 +25,7 @@
             "resources": [
                 {
                 "type": "Microsoft.KeyVault/vaults/providers/diagnosticsettings",
-                "name": "[concat(parameters('vaults_kvkg2_name'), '/Microsoft.Insights/service')]",
+                "name": "[concat(parameters('vaults_kvkg2_name'), '/Microsoft.Insights/mama')]",
                 "apiVersion": "2016-09-01",
                 "location": "[parameters('location')]",
                 "dependsOn": [
@@ -33,7 +33,6 @@
                 ],
                 "properties": {
                     "workspaceId": "[parameters('workspaceId')]",
-                    "eventHubName": "kgtest",
                     "logs": [
                     {
                         "category": "AuditEvent",
