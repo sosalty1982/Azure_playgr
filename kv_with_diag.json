@@ -33,7 +33,7 @@
                 "apiVersion": "2016-09-01",
                 "location": "[parameters('location')]",
                 "dependsOn": [
-                    "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kvkg2_name'))]",
+                    "[resourceId('Microsoft.KeyVault/vaults', parameters('vaults_kvkg2_name'))]"
                 ],
                 "properties": {
                     "workspaceId": "[parameters('workspaceId')]",
